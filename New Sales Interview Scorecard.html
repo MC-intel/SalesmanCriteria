@@ -152,11 +152,17 @@
         button:hover {
             background-color: #2980b9;
         }
-        .print-button {
-            background-color: #95a5a6;
+        .print-button { 
+            background-color: #95a5a6; 
         }
         .print-button:hover {
             background-color: #7f8c8d;
+        }
+        .clear-button {
+            background-color: #e74c3c;
+        }
+        .clear-button:hover {
+            background-color: #c0392b;
         }
         .export-button {
             background-color: #27ae60;
@@ -411,6 +417,7 @@
 
         <div style="text-align: center; margin-top: 20px;">
             <button onclick="calculateScore()" class="no-print">Calculate Score</button>
+            <button onclick="clearInputsAndCache()" class="clear-button no-print">Clear Inputs</button>
             <button onclick="resetForm()" class="no-print">Reset Form</button>
             <button onclick="exportToCSV()" class="export-button no-print">Export to CSV</button>
             <button onclick="window.print()" class="print-button no-print">Print Report</button>
@@ -553,6 +560,32 @@
             }
 
             document.getElementById('recommendation').textContent = recommendation;
+        }
+
+        function clearInputsAndCache() {
+            if (confirm('Clear all inputs and saved data? This will remove cached entries.')) {
+                Object.keys(localStorage)
+                    .filter(key => key.startsWith(STORAGE_PREFIX))
+                    .forEach(key => localStorage.removeItem(key));
+
+                document.querySelectorAll('.candidate-info input, .score-input, .notes-input').forEach(field => {
+                    if (field.type === 'date') {
+                        field.value = '';
+                    } else {
+                        field.value = '';
+                    }
+                });
+
+                document.querySelectorAll('.weighted-score').forEach(cell => {
+                    cell.textContent = '0';
+                });
+
+                document.getElementById('totalScore').textContent = 'Total Score: 0%';
+                document.getElementById('recommendation').textContent = 'Enter scores to see recommendation';
+                document.getElementById('coreScore').textContent = '-';
+                document.getElementById('profScore').textContent = '-';
+                document.getElementById('gritScore').textContent = '-';
+            }
         }
 
         function resetForm() {
