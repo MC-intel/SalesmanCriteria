@@ -428,7 +428,7 @@
     </div>
 
     <script>
-        const FORM_STORAGE_KEY = 'newSalespersonFormCache';
+
 
         // Set today's date as default
         document.getElementById('interviewDate').valueAsDate = new Date();
@@ -438,11 +438,6 @@
             input.addEventListener('input', updateWeightedScore);
         });
 
-        // Cache all form fields so they persist after refresh
-        document.querySelectorAll('input, textarea').forEach((field) => {
-            field.addEventListener('input', saveFormToCache);
-        });
-        restoreFormFromCache();
 
         function updateWeightedScore(event) {
             const input = event.target;
@@ -540,7 +535,7 @@
                 document.querySelectorAll('.notes-input').forEach(textarea => {
                     textarea.value = '';
                 });
-                clearFormCache();
+
                 document.getElementById('totalScore').textContent = 'Total Score: 0%';
                 document.getElementById('recommendation').textContent = 'Enter scores to see recommendation';
                 document.getElementById('coreScore').textContent = '-';
@@ -549,29 +544,7 @@
             }
         }
 
-        function saveFormToCache() {
-            const values = Array.from(document.querySelectorAll('input, textarea')).map(field => field.value);
-            localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(values));
-        }
 
-        function restoreFormFromCache() {
-            try {
-                const cached = localStorage.getItem(FORM_STORAGE_KEY);
-                if (!cached) return;
-                const values = JSON.parse(cached);
-                document.querySelectorAll('input, textarea').forEach((field, index) => {
-                    if (values[index] !== undefined) {
-                        field.value = values[index];
-                    }
-                });
-                document.querySelectorAll('.score-input').forEach(input => updateWeightedScore({ target: input }));
-            } catch (error) {
-                console.error('Unable to restore cached form values', error);
-            }
-        }
-
-        function clearFormCache() {
-            localStorage.removeItem(FORM_STORAGE_KEY);
         }
 
         function exportToCSV() {
