@@ -465,17 +465,51 @@
     </div>
 
     <script>
+        const STORAGE_PREFIX = 'behavior_scorecard_';
 
+        function buildStorageKey(field, index) {
+            if (field.id) {
+                return `${STORAGE_PREFIX}${field.id}`;
+            }
 
-        // Set today's date as default
-        document.getElementById('interviewDate').valueAsDate = new Date();
+            const attributeName = field.closest('tr')?.querySelector('.attribute-name')?.textContent || '';
 
-        // Calculate scores when any input changes
-        document.querySelectorAll('.score-input').forEach(input => {
-            input.addEventListener('input', updateWeightedScore);
-        });
+            if (attributeName) {
+                const normalizedName = attributeName.replace(/\W+/g, '_').toLowerCase();
+                const suffix = field.classList.contains('score-input') ? '_score' : '_notes';
+                return `${STORAGE_PREFIX}${normalizedName}${suffix}`;
+            }
 
+            return `${STORAGE_PREFIX}field_${index}`;
+        }
 
+        function initializePersistence() {
+            const fields = Array.from(document.querySelectorAll('.candidate-info input, .score-input, .notes-input'));
+
+            fields.forEach((field, index) => {
+                const key = buildStorageKey(field, index);
+                field.dataset.storageKey = key;
+
+                const savedValue = localStorage.getItem(key);
+                if (savedValue !== null) {
+                    field.value = savedValue;
+
+                    if (field.classList.contains('score-input')) {
+                        updateWeightedScore({ target: field });
+                    }
+                } else if (field.type === 'date') {
+                    field.valueAsDate = new Date();
+                }
+
+                field.addEventListener('input', () => {
+                    localStorage.setItem(key, field.value);
+
+                    if (field.classList.contains('score-input')) {
+                        updateWeightedScore({ target: field });
+                    }
+                });
+            });
+        }
 
         function updateWeightedScore(event) {
             const input = event.target;
@@ -560,18 +594,18 @@
 
         function resetForm() {
             if (confirm('Are you sure you want to reset all scores and information?')) {
-                document.querySelectorAll('input').forEach(input => {
-                    if (input.type === 'date') {
-                        input.valueAsDate = new Date();
+                document.querySelectorAll('[data-storage-key]').forEach(field => {
+                    localStorage.removeItem(field.dataset.storageKey);
+
+                    if (field.type === 'date') {
+                        field.valueAsDate = new Date();
                     } else {
-                        input.value = '';
+                        field.value = '';
                     }
                 });
+
                 document.querySelectorAll('.weighted-score').forEach(cell => {
                     cell.textContent = '0';
-                });
-                document.querySelectorAll('.notes-input').forEach(textarea => {
-                    textarea.value = '';
                 });
 
                 document.getElementById('totalScore').textContent = 'Total Score: 0%';
@@ -582,8 +616,7 @@
             }
         }
 
-
-        }
+        document.addEventListener('DOMContentLoaded', initializePersistence);
 
         function exportToCSV() {
             const candidateName = document.getElementById('candidateName').value || 'Candidate';
