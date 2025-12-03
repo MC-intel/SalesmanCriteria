@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Daly Sales Interview Scoring System - Behavioral Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+        .candidate-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .candidate-info input {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .category-header {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .score-input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #3498db;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .weight-col {
+            text-align: center;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .notes-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .scoring-guide {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .scoring-guide h3 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        .total-score {
+            background-color: #2ecc71;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .recommendation {
+            background-color: #f39c12;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .summary-box {
+            background-color: #e8f6f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid #16a085;
+        }
+        .summary-box h3 {
+            color: #16a085;
+            margin-top: 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .print-button {
+            background-color: #95a5a6;
+        }
+        .print-button:hover {
+            background-color: #7f8c8d;
+        }
+        .export-button {
+            background-color: #27ae60;
+        }
+        .export-button:hover {
+            background-color: #229954;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                margin: 10px;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+        .attribute-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .question-text {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Jack Daly</div>
+        <h1>Salesperson Profile Interview Scoring System</h1>
+        <p class="subtitle">Behavioral Questions Based on Jack Daly's 20 Key Attributes</p>
+        
+        <div class="candidate-info">
+            <h3>Candidate Information</h3>
+            <label>Name: <input type="text" id="candidateName" placeholder="Enter candidate name"></label>
+            <label>Date: <input type="date" id="interviewDate"></label>
+            <label>Position: <input type="text" id="position" placeholder="Sales position"></label>
+            <label>Interviewer: <input type="text" id="interviewer" placeholder="Your name"></label>
+        </div>
+
+        <div class="important-note">
+            <h3>⚠️ Interview Instructions</h3>
+            <p><strong>Focus on PAST BEHAVIOR:</strong> All questions are designed to uncover what candidates ACTUALLY DID, not what they would do. Past behavior is the best predictor of future performance. Push for specific examples with measurable results.</p>
+            <p><strong>Listen for:</strong> Specific situations, actions taken, measurable results, and lessons learned.</p>
+        </div>
+
+        <div class="scoring-guide">
+            <h3>Scoring Guide</h3>
+            <p><strong>5 = Exceptional</strong> - Multiple specific examples with outstanding measurable results</p>
+            <p><strong>4 = Strong</strong> - Clear examples with good results and specifics</p>
+            <p><strong>3 = Adequate</strong> - Basic examples but lacks detail or results</p>
+            <p><strong>2 = Below Average</strong> - Vague answers, no specific examples</p>
+            <p><strong>1 = Poor</strong> - Cannot provide examples or deflects questions</p>
+        </div>
+
+        <table id="scoringTable">
+            <thead>
+                <tr>
+                    <th style="width: 25%">Attribute</th>
+                    <th style="width: 40%">Behavioral Interview Question</th>
+                    <th style="width: 8%">Weight</th>
+                    <th style="width: 8%">Score (1-5)</th>
+                    <th style="width: 8%">Weighted Score</th>
+                    <th style="width: 11%">Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- CORE CHARACTER TRAITS -->
+                <tr class="category-header">
+                    <td colspan="6">CORE CHARACTER TRAITS</td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">1. Personal Integrity/Intellectual Honesty</td>
+                    <td class="question-text">Tell me about a time you lost a sale because you were honest about your product's limitations. What happened?</td>
+                    <td class="weight-col">8%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="8"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">2. Sales Skill/People Skills/Relationship Manager</td>
+                    <td class="question-text">Describe a client relationship you maintained for over 3 years. What specific actions kept them loyal?</td>
+                    <td class="weight-col">7%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">3. Vision/Mission/Goals</td>
+                    <td class="question-text">What specific goals did you set 2 years ago and what percentage did you achieve? Walk me through your tracking process.</td>
+                    <td class="weight-col">6%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">4. Success Patterns/High Achiever</td>
+                    <td class="question-text">Tell me about your biggest professional achievement. What specific steps led to that success?</td>
+                    <td class="weight-col">7%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">5. Self-Disciplined/Sense of Urgency</td>
+                    <td class="question-text">Describe a time you had to maintain high activity levels for 90+ days without supervision. What were your daily numbers?</td>
+                    <td class="weight-col">6%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">6. Good Work Organization</td>
+                    <td class="question-text">Walk me through exactly how you managed your territory in your last role. Show me your system.</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">7. Goal Oriented/$ Hungry Through Value</td>
+                    <td class="question-text">Tell me about a time you walked away from a large commission. What was the dollar amount and what happened next?</td>
+                    <td class="weight-col">6%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">8. Positive Outlook and Attitude</td>
+                    <td class="question-text">Describe your worst sales month ever. What were your activities the following month?</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">9. High Self-Esteem</td>
+                    <td class="question-text">Tell me about a time you received harsh criticism from a manager. What did they say and what did you do?</td>
+                    <td class="weight-col">4%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+
+                <!-- PROFESSIONAL COMPETENCIES -->
+                <tr class="category-header">
+                    <td colspan="6">PROFESSIONAL COMPETENCIES</td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">10. Industry/Company/Product Knowledge</td>
+                    <td class="question-text">Give me an example of when your deep product knowledge helped you win a deal others couldn't. Be specific.</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">11. Client Market-Share Oriented</td>
+                    <td class="question-text">Walk me through how you grew a small account into a major one. Include timeline and revenue numbers.</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">12. Team Player/Independent Yet Supportive</td>
+                    <td class="question-text">Tell me about a time you helped a teammate close a deal. What was your contribution?</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">13. Understands Self-Responsibility</td>
+                    <td class="question-text">Tell me about your biggest sales failure. What was your specific role in causing it?</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">14. Assertive Social Style/Follow Through</td>
+                    <td class="question-text">Describe a deal that required 10+ follow-ups. What was your exact sequence and timeline?</td>
+                    <td class="weight-col">5%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">15. Continuing Education Achievements</td>
+                    <td class="question-text">What sales training did you complete last year? How did you apply it and what were the results?</td>
+                    <td class="weight-col">4%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">16. Public Speaking Ability/Communicator</td>
+                    <td class="question-text">Tell me about your largest group presentation. How many people and what was the outcome?</td>
+                    <td class="weight-col">4%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">17. Generous with Thank-Yous</td>
+                    <td class="question-text">Give me examples of thank-you gestures you've done in the last 6 months. What was the response?</td>
+                    <td class="weight-col">3%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="3"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">18. Professional Manner</td>
+                    <td class="question-text">Describe a time your professionalism was tested by a difficult client. What exactly happened?</td>
+                    <td class="weight-col">4%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">19. Computer Literate</td>
+                    <td class="question-text">What CRM system did you use in your last role? Show me reports you created and how you used the data.</td>
+                    <td class="weight-col">3%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="3"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+
+                <!-- JACK DALY'S #1 ATTRIBUTE -->
+                <tr class="category-header">
+                    <td colspan="6">JACK DALY'S #1 EMPHASIS AREA</td>
+                </tr>
+                <tr>
+                    <td class="attribute-name">20. Grit & Never Give Up Attitude</td>
+                    <td class="question-text">What's the longest you've pursued a single opportunity? Walk me through the timeline and all rejection points.</td>
+                    <td class="weight-col">7%</td>
+                    <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
+                    <td class="weighted-score">0</td>
+                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-box">
+            <h3>Follow-Up Questions to Ask Based on Their Answers:</h3>
+            <ul>
+                <li><strong>For vague answers:</strong> "Can you give me specific numbers?" "What exactly did you say?" "What was the exact outcome?"</li>
+                <li><strong>For success stories:</strong> "What obstacles did you face?" "Who else was involved?" "How did you measure success?"</li>
+                <li><strong>For failure stories:</strong> "What would you do differently?" "What did you learn?" "How did it change your approach?"</li>
+                <li><strong>Always ask:</strong> "What happened next?" "Can you give me another example?" "How typical was this situation?"</li>
+            </ul>
+        </div>
+
+        <div class="summary-box">
+            <h3>Category Scores Summary</h3>
+            <div id="categorySummary">
+                <p><strong>Core Character Traits (Attributes 1-9):</strong> <span id="coreScore">-</span></p>
+                <p><strong>Professional Competencies (Attributes 10-19):</strong> <span id="profScore">-</span></p>
+                <p><strong>Grit & Persistence (Attribute 20):</strong> <span id="gritScore">-</span></p>
+            </div>
+        </div>
+
+        <div class="total-score" id="totalScore">Total Score: 0%</div>
+        <div class="recommendation" id="recommendation">Enter scores to see recommendation</div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="calculateScore()" class="no-print">Calculate Score</button>
+            <button onclick="resetForm()" class="no-print">Reset Form</button>
+            <button onclick="exportToCSV()" class="export-button no-print">Export to CSV</button>
+            <button onclick="window.print()" class="print-button no-print">Print Report</button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background-color: #ecf0f1; border-radius: 5px;">
+            <h3>Red Flags During Interview (Beyond the Answers):</h3>
+            <ul>
+                <li>Cannot provide specific examples - speaks in generalities</li>
+                <li>Blames others for failures - no ownership</li>
+                <li>No measurable results to share - can't quantify success</li>
+                <li>Gets defensive when pressed for details</li>
+                <li>Stories don't add up or change when probed</li>
+                <li>No evidence of perseverance through adversity</li>
+                <li>Talks more about what they "would do" vs. what they "did do"</li>
+            </ul>
+            
+            <h3 style="margin-top: 20px;">Green Flags to Watch For:</h3>
+            <ul>
+                <li>Specific examples with names, dates, and numbers</li>
+                <li>Takes ownership of both successes and failures</li>
+                <li>Shows continuous improvement from experiences</li>
+                <li>Demonstrates genuine care for client outcomes</li>
+                <li>Evidence of long-term thinking and relationships</li>
+                <li>Comfortable with detailed follow-up questions</li>
+                <li>Shows enthusiasm when discussing past challenges</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date as default
+        document.getElementById('interviewDate').valueAsDate = new Date();
+
+        // Calculate scores when any input changes
+        document.querySelectorAll('.score-input').forEach(input => {
+            input.addEventListener('input', updateWeightedScore);
+        });
+
+        function updateWeightedScore(event) {
+            const input = event.target;
+            const row = input.closest('tr');
+            const score = parseInt(input.value) || 0;
+            const weight = parseInt(input.getAttribute('data-weight'));
+            const weightedScore = (score * weight) / 5;
+            row.querySelector('.weighted-score').textContent = weightedScore.toFixed(1);
+        }
+
+        function calculateScore() {
+            let totalWeightedScore = 0;
+            let totalWeight = 0;
+            let allScoresEntered = true;
+            
+            // Category scores
+            let coreTotal = 0, coreWeight = 0;
+            let profTotal = 0, profWeight = 0;
+            let gritScore = 0;
+
+            const inputs = document.querySelectorAll('.score-input');
+            inputs.forEach((input, index) => {
+                const score = parseInt(input.value) || 0;
+                const weight = parseInt(input.getAttribute('data-weight'));
+                
+                if (score === 0) {
+                    allScoresEntered = false;
+                } else {
+                    const weightedScore = (score * weight) / 5;
+                    totalWeightedScore += weightedScore;
+                    totalWeight += weight;
+                    
+                    // Categorize scores
+                    if (index < 9) { // Core traits
+                        coreTotal += weightedScore;
+                        coreWeight += weight;
+                    } else if (index < 19) { // Professional
+                        profTotal += weightedScore;
+                        profWeight += weight;
+                    } else { // Grit
+                        gritScore = score;
+                    }
+                }
+            });
+
+            if (!allScoresEntered) {
+                alert('Please enter scores for all 20 attributes before calculating.');
+                return;
+            }
+
+            // Update category summaries
+            document.getElementById('coreScore').textContent = 
+                coreWeight > 0 ? `${((coreTotal / coreWeight) * 100).toFixed(1)}%` : '-';
+            document.getElementById('profScore').textContent = 
+                profWeight > 0 ? `${((profTotal / profWeight) * 100).toFixed(1)}%` : '-';
+            document.getElementById('gritScore').textContent = `${gritScore}/5`;
+
+            // Display total score
+            document.getElementById('totalScore').textContent = `Total Score: ${totalWeightedScore.toFixed(1)}%`;
+
+            // Determine recommendation
+            let recommendation = '';
+            if (totalWeightedScore >= 90) {
+                recommendation = 'STRONG HIRE - Exceptional candidate matching Jack Daly profile';
+            } else if (totalWeightedScore >= 80) {
+                recommendation = 'HIRE - Very good candidate with strong sales DNA';
+            } else if (totalWeightedScore >= 70) {
+                recommendation = 'CONSIDER - Good candidate with development potential';
+            } else if (totalWeightedScore >= 60) {
+                recommendation = 'CAUTION - Average candidate, significant gaps in key areas';
+            } else {
+                recommendation = 'DO NOT HIRE - Below minimum standards for success';
+            }
+
+            // Special emphasis on grit (Jack Daly's #1 attribute)
+            if (gritScore < 4 && totalWeightedScore >= 70) {
+                recommendation += ' (WARNING: Low grit score - critical concern)';
+            }
+
+            document.getElementById('recommendation').textContent = recommendation;
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all scores and information?')) {
+                document.querySelectorAll('input').forEach(input => {
+                    if (input.type === 'date') {
+                        input.valueAsDate = new Date();
+                    } else {
+                        input.value = '';
+                    }
+                });
+                document.querySelectorAll('.weighted-score').forEach(cell => {
+                    cell.textContent = '0';
+                });
+                document.getElementById('totalScore').textContent = 'Total Score: 0%';
+                document.getElementById('recommendation').textContent = 'Enter scores to see recommendation';
+                document.getElementById('coreScore').textContent = '-';
+                document.getElementById('profScore').textContent = '-';
+                document.getElementById('gritScore').textContent = '-';
+            }
+        }
+
+        function exportToCSV() {
+            const candidateName = document.getElementById('candidateName').value || 'Candidate';
+            const date = document.getElementById('interviewDate').value;
+            const position = document.getElementById('position').value;
+            const interviewer = document.getElementById('interviewer').value;
+            
+            let csv = 'Jack Daly Salesperson Profile - Interview Scoring\n\n';
+            csv += `Candidate Name:,${candidateName}\n`;
+            csv += `Date:,${date}\n`;
+            csv += `Position:,${position}\n`;
+            csv += `Interviewer:,${interviewer}\n\n`;
+            
+            csv += 'Attribute,Weight,Score,Weighted Score,Notes\n';
+            
+            const rows = document.querySelectorAll('#scoringTable tbody tr');
+            rows.forEach(row => {
+                if (!row.classList.contains('category-header')) {
+                    const attribute = row.querySelector('.attribute-name').textContent;
+                    const weight = row.querySelector('.weight-col').textContent;
+                    const scoreInput = row.querySelector('.score-input');
+                    const score = scoreInput.value || '0';
+                    const weightedScore = row.querySelector('.weighted-score').textContent;
+                    const notes = row.querySelector('.notes-input').value.replace(/,/g, ';');
+                    
+                    csv += `"${attribute}",${weight},${score},${weightedScore},"${notes}"\n`;
+                }
+            });
+            
+            const totalScore = document.getElementById('totalScore').textContent;
+            const recommendation = document.getElementById('recommendation').textContent;
+            csv += `\n${totalScore}\n`;
+            csv += `${recommendation}\n`;
+            
+            // Download CSV
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `${candidateName}_SalesProfile_${date}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
