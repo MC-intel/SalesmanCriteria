@@ -465,7 +465,6 @@
     </div>
 
     <script>
-        const NOTES_STORAGE_KEY = 'pastTenseScorecardNotesCache';
 
         // Set today's date as default
         document.getElementById('interviewDate').valueAsDate = new Date();
@@ -475,11 +474,7 @@
             input.addEventListener('input', updateWeightedScore);
         });
 
-        // Cache notes so they persist after refresh
-        document.querySelectorAll('.notes-input').forEach((textarea) => {
-            textarea.addEventListener('input', saveNotesToCache);
-        });
-        restoreNotesFromCache();
+
 
         function updateWeightedScore(event) {
             const input = event.target;
@@ -577,7 +572,7 @@
                 document.querySelectorAll('.notes-input').forEach(textarea => {
                     textarea.value = '';
                 });
-                clearNotesCache();
+
                 document.getElementById('totalScore').textContent = 'Total Score: 0%';
                 document.getElementById('recommendation').textContent = 'Enter scores to see recommendation';
                 document.getElementById('coreScore').textContent = '-';
@@ -586,28 +581,7 @@
             }
         }
 
-        function saveNotesToCache() {
-            const notes = Array.from(document.querySelectorAll('.notes-input')).map(textarea => textarea.value);
-            localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
-        }
 
-        function restoreNotesFromCache() {
-            try {
-                const cached = localStorage.getItem(NOTES_STORAGE_KEY);
-                if (!cached) return;
-                const notes = JSON.parse(cached);
-                document.querySelectorAll('.notes-input').forEach((textarea, index) => {
-                    if (notes[index] !== undefined) {
-                        textarea.value = notes[index];
-                    }
-                });
-            } catch (error) {
-                console.error('Unable to restore cached notes', error);
-            }
-        }
-
-        function clearNotesCache() {
-            localStorage.removeItem(NOTES_STORAGE_KEY);
         }
 
         function exportToCSV() {
