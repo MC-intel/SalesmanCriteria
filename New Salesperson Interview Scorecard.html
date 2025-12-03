@@ -87,10 +87,17 @@
         }
         .notes-input {
             width: 100%;
-            padding: 5px;
+            min-height: 90px;
+            padding: 10px;
             border: 1px solid #bdc3c7;
             border-radius: 3px;
-            font-size: 12px;
+            font-size: 13px;
+            box-sizing: border-box;
+            resize: both;
+            line-height: 1.4;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
         .scoring-guide {
             background-color: #e8f4f8;
@@ -223,7 +230,7 @@
                     <td class="weight-col">8%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="8"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">2. Sales Skill/People Skills/Relationship Manager</td>
@@ -231,7 +238,7 @@
                     <td class="weight-col">7%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">3. Vision/Mission/Goals</td>
@@ -239,7 +246,7 @@
                     <td class="weight-col">6%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">4. Success Patterns/High Achiever</td>
@@ -247,7 +254,7 @@
                     <td class="weight-col">7%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">5. Self-Disciplined/Sense of Urgency</td>
@@ -255,7 +262,7 @@
                     <td class="weight-col">6%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">6. Good Work Organization</td>
@@ -263,7 +270,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">7. Goal Oriented/$ Hungry Through Value</td>
@@ -271,7 +278,7 @@
                     <td class="weight-col">6%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="6"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">8. Positive Outlook and Attitude</td>
@@ -279,7 +286,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">9. High Self-Esteem</td>
@@ -287,7 +294,7 @@
                     <td class="weight-col">4%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
 
                 <!-- RIGHT COLUMN ATTRIBUTES -->
@@ -300,7 +307,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">11. Client Market-Share Oriented</td>
@@ -308,7 +315,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">12. Team Player/Independent Yet Supportive</td>
@@ -316,7 +323,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">13. Understands Self-Responsibility</td>
@@ -324,7 +331,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">14. Assertive Social Style/Follow Through</td>
@@ -332,7 +339,7 @@
                     <td class="weight-col">5%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="5"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">15. Continuing Education Achievements</td>
@@ -340,7 +347,7 @@
                     <td class="weight-col">4%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">16. Public Speaking Ability/Communicator</td>
@@ -348,7 +355,7 @@
                     <td class="weight-col">4%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">17. Generous with Thank-Yous</td>
@@ -356,7 +363,7 @@
                     <td class="weight-col">3%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="3"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">18. Professional Manner</td>
@@ -364,7 +371,7 @@
                     <td class="weight-col">4%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="4"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
                 <tr>
                     <td class="attribute-name">19. Computer Literate</td>
@@ -372,7 +379,7 @@
                     <td class="weight-col">3%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="3"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
 
                 <!-- ADDITIONAL OBSERVED TRAITS -->
@@ -385,7 +392,7 @@
                     <td class="weight-col">7%</td>
                     <td><input type="number" class="score-input" min="1" max="5" data-weight="7"></td>
                     <td class="weighted-score">0</td>
-                    <td><input type="text" class="notes-input" placeholder="Notes..."></td>
+                    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
                 </tr>
             </tbody>
         </table>
@@ -421,6 +428,8 @@
     </div>
 
     <script>
+        const NOTES_STORAGE_KEY = 'newSalespersonNotesCache';
+
         // Set today's date as default
         document.getElementById('interviewDate').valueAsDate = new Date();
 
@@ -428,6 +437,12 @@
         document.querySelectorAll('.score-input').forEach(input => {
             input.addEventListener('input', updateWeightedScore);
         });
+
+        // Cache notes so they persist after refresh
+        document.querySelectorAll('.notes-input').forEach((textarea) => {
+            textarea.addEventListener('input', saveNotesToCache);
+        });
+        restoreNotesFromCache();
 
         function updateWeightedScore(event) {
             const input = event.target;
@@ -522,12 +537,40 @@
                 document.querySelectorAll('.weighted-score').forEach(cell => {
                     cell.textContent = '0';
                 });
+                document.querySelectorAll('.notes-input').forEach(textarea => {
+                    textarea.value = '';
+                });
+                clearNotesCache();
                 document.getElementById('totalScore').textContent = 'Total Score: 0%';
                 document.getElementById('recommendation').textContent = 'Enter scores to see recommendation';
                 document.getElementById('coreScore').textContent = '-';
                 document.getElementById('profScore').textContent = '-';
                 document.getElementById('gritScore').textContent = '-';
             }
+        }
+
+        function saveNotesToCache() {
+            const notes = Array.from(document.querySelectorAll('.notes-input')).map(textarea => textarea.value);
+            localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+        }
+
+        function restoreNotesFromCache() {
+            try {
+                const cached = localStorage.getItem(NOTES_STORAGE_KEY);
+                if (!cached) return;
+                const notes = JSON.parse(cached);
+                document.querySelectorAll('.notes-input').forEach((textarea, index) => {
+                    if (notes[index] !== undefined) {
+                        textarea.value = notes[index];
+                    }
+                });
+            } catch (error) {
+                console.error('Unable to restore cached notes', error);
+            }
+        }
+
+        function clearNotesCache() {
+            localStorage.removeItem(NOTES_STORAGE_KEY);
         }
 
         function exportToCSV() {
@@ -562,7 +605,7 @@
             const recommendation = document.getElementById('recommendation').textContent;
             csv += `\n${totalScore}\n`;
             csv += `${recommendation}\n`;
-            
+
             // Download CSV
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
